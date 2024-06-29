@@ -84,16 +84,33 @@ function App() {
       {!show?<button onClick={createUser}> Create User </button>:
       <button onClick={updateUser}> Update User </button>}
 
-      {users.map((user) => { 
-        return (
-          <div> 
-          <h1>Name: {user.Name}</h1>
-          <h1>Age: {user.Age}</h1>
-          <button onClick={() => editUser(user.id, user.Name, user.Age, user.Sal, user.Dept)}>Edit</button>
-          <button onClick={() => deleteUser(user.id, user.Name, user.Age, user.Sal, user.Dept)}>Delete</button>
-          </div>
-        );
-      })} 
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Date of Birth</th>
+            <th>Salary</th>
+            <th>Department</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.Name}</td>
+              <td>{user.Age}</td>
+              <td>{user.DOB}</td>
+              <td>{user.Sal}</td>
+              <td>{user.Dept}</td>
+              <td>
+                <button onClick={() => editUser(user.id, user.Name, user.Age, user.DOB, user.Sal, user.Dept)}>Edit</button>
+                <button onClick={() => deleteUser(user.id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
