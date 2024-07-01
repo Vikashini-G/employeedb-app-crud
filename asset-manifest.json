@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Vikashini-G/employeedb-app-crud.git/static/css/main.e97ecd62.css",
+    "main.js": "/Vikashini-G/employeedb-app-crud.git/static/js/main.bda62259.js",
+    "static/js/453.fbcca3cf.chunk.js": "/Vikashini-G/employeedb-app-crud.git/static/js/453.fbcca3cf.chunk.js",
+    "index.html": "/Vikashini-G/employeedb-app-crud.git/index.html",
+    "main.e97ecd62.css.map": "/Vikashini-G/employeedb-app-crud.git/static/css/main.e97ecd62.css.map",
+    "main.bda62259.js.map": "/Vikashini-G/employeedb-app-crud.git/static/js/main.bda62259.js.map",
+    "453.fbcca3cf.chunk.js.map": "/Vikashini-G/employeedb-app-crud.git/static/js/453.fbcca3cf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e97ecd62.css",
+    "static/js/main.bda62259.js"
+  ]
+}
