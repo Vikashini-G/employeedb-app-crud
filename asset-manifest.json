@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Vikashini-G/employeedb-app-crud/static/css/main.e97ecd62.css",
-    "main.js": "/Vikashini-G/employeedb-app-crud/static/js/main.a0721f3f.js",
-    "static/js/453.fbcca3cf.chunk.js": "/Vikashini-G/employeedb-app-crud/static/js/453.fbcca3cf.chunk.js",
-    "index.html": "/Vikashini-G/employeedb-app-crud/index.html",
-    "main.e97ecd62.css.map": "/Vikashini-G/employeedb-app-crud/static/css/main.e97ecd62.css.map",
-    "main.a0721f3f.js.map": "/Vikashini-G/employeedb-app-crud/static/js/main.a0721f3f.js.map",
-    "453.fbcca3cf.chunk.js.map": "/Vikashini-G/employeedb-app-crud/static/js/453.fbcca3cf.chunk.js.map"
+    "main.css": "/employeedb-app-crud/static/css/main.e97ecd62.css",
+    "main.js": "/employeedb-app-crud/static/js/main.cb661183.js",
+    "static/js/453.fbcca3cf.chunk.js": "/employeedb-app-crud/static/js/453.fbcca3cf.chunk.js",
+    "index.html": "/employeedb-app-crud/index.html",
+    "main.e97ecd62.css.map": "/employeedb-app-crud/static/css/main.e97ecd62.css.map",
+    "main.cb661183.js.map": "/employeedb-app-crud/static/js/main.cb661183.js.map",
+    "453.fbcca3cf.chunk.js.map": "/employeedb-app-crud/static/js/453.fbcca3cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e97ecd62.css",
-    "static/js/main.a0721f3f.js"
+    "static/js/main.cb661183.js"
   ]
 }
