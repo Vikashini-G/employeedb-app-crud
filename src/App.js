@@ -1,6 +1,6 @@
 import './App.css';
-// import { db } from './firebase';
 import UserManagement from './pages/UserManagement';
+
 
 function App() {
   return (

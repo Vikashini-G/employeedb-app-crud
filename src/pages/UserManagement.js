@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { collection, getDocs, addDoc, doc, deleteDoc, updateDoc, or } from "firebase/firestore";
+import { collection, getDocs, addDoc, doc, deleteDoc, updateDoc, query, orderBy } from "firebase/firestore";
 import { db } from '../firebase';
 import './UserManagement.css';
 
@@ -16,6 +16,8 @@ const UserManagement = () => {
 
     //   Functions for filters
     const [filterName, setFilterName] = useState('');
+    const [sortFieldBy, setSortFIeldBy] = useState('Sal');
+    const [sortOrderBy, setSortOrderBy] = useState('asc');
 
     const createUser = async () => {
         await addDoc(usersCollectionRef, { Name: newName, Age: newAge, DOB: newDOB, Sal: newSal, Dept: newDept });
@@ -50,43 +52,52 @@ const UserManagement = () => {
         fetchUsers();
     };
 
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-
-    const fetchUsers = async () => {
-        const data = await getDocs(usersCollectionRef);
-        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
     //   Filters
     const handleFilterChange = (event) => {
         setFilterName(event.target.value);
     };
+    const handleSortFieldChange = (event) => {
+        const sortByOrder = event.target.value;
+        setSortFIeldBy(sortByOrder);
+        fetchUsers(event.target.value,sortOrderBy);
+    };
+    const handleSortOrderChange = (event) => {
+        const sortByField = event.target.value;
+        setSortOrderBy(sortByField);
+        fetchUsers(sortFieldBy,event.target.value);
+    }
 
-
-    //   Sort
-    const sortedUsers = [...users].sort((a, b) => a.Sal - b.Sal);
-
-    const filteredUsers = sortedUsers.filter((user) =>
+    const filteredUsers = users.filter((user) =>
         user.Name.toLowerCase().includes(filterName.toLowerCase()) ||
         user.Dept.toLowerCase().includes(filterName.toLowerCase())
     );
+    
+    //  Fetch employee data
+    useEffect(() => {
+        fetchUsers(sortFieldBy, sortOrderBy);
+    }, [sortFieldBy, sortOrderBy]);
+
+    const fetchUsers = async () => {
+        const q = query(usersCollectionRef, orderBy(sortFieldBy, sortOrderBy));
+        const data = await getDocs(q);
+        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
 
     return (
         <div className="UserManagement">
             {/* Filter by name and Department */}
+
             <div id="searchBox">
                 <i className="fas fa-search"></i>
                 <input
                     type="text"
                     value={filterName}
-                    placeholder="Filter by Name or Department..."
+                    placeholder="Search by Name or Department..."
                     onChange={handleFilterChange}
                 />
             </div>
 
-            <div id="space"></div>
+            <div class="space"></div>
 
             {/* Create or edit Employee data */}
             <div class="createFields">
@@ -145,6 +156,25 @@ const UserManagement = () => {
             {!show ? <button class="createButton" onClick={createUser}> Create User </button> :
                     <button class="createButton" onClick={updateUser}> Update User </button>}
             </div>
+            
+            <div class="space"></div>
+
+            {/* Sort by Field and Order */}
+            <div class="sortContainer">
+                <div class="sortControls">
+                    <i id="sortIcon" class="fa-solid fa-arrow-up-wide-short"></i>
+                    <select name="sortFieldBy" id="sortField" value={sortFieldBy} onChange={handleSortFieldChange}>
+                        <option value="Name">Name</option>
+                        <option value="DOB">Date of Birth</option>
+                        <option value="Sal">Salary</option>
+                    </select>
+                    <select name="sortOrderBy" id="sortOrder" value={sortOrderBy} onChange={handleSortOrderChange}>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+            </div>
+
             <table id="dataTable">
                 <thead>
                     <tr>
@@ -165,8 +195,8 @@ const UserManagement = () => {
                             <td>{user.Sal}</td>
                             <td>{user.Dept}</td>
                             <td>
-                                <button onClick={() => editUser(user.id, user.Name, user.Age, user.DOB, user.Sal, user.Dept)}>Edit</button>
-                                <button onClick={() => deleteUser(user.id)}>Delete</button>
+                                <button class="actionOptions" id="editButton" onClick={() => editUser(user.id, user.Name, user.Age, user.DOB, user.Sal, user.Dept)}>Edit</button>
+                                <button class="actionOptions" onClick={() => deleteUser(user.id)}>Delete</button>
                             </td>
                         </tr>
                     ))}

@@ -1,13 +1,15 @@
-
+body {
+    background-color: #1F1F1F;
+}
 
 .UserManagement{
-    margin: 20px;
+    background-color: #1F1F1F;
+    padding: 20px;
+    color: white;
 }
-#searchBox:hover input, #searchBox:hover{
-    background-color: #b3ebdc;
-}
+
 #searchBox {
-    border: 1px solid; 
+    background-color: #444444;
     box-sizing: border-box;
     width: 70%;
     padding: 10px;
@@ -16,14 +18,19 @@
     margin-right: auto;
     border-radius: 7px;
 }
+#searchBox:hover{
+    box-shadow: inset 0 0 0 1px #CCCCCC;
+}
+
 #searchBox input{
+    background-color: #444444;
     outline: none;
     border: 0;
     display: flex;
     flex-grow: 1;
     padding-left: 10px;
+    color: white;
 }
-
 .createFields{
     width: 60%;
     display: flex;
@@ -32,27 +39,26 @@
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid;
+    border: 1px solid #444444;
     border-radius: 10px;
     padding: 10px;
-    /* background-color: black; */
+    background-color: #2C2C2C;
 }
 .createFieldRows{
-    /* padding: 10px; */
     display: flex;
     box-sizing: border-box;
-    /* border: 1px solid; */
-    /* border-radius: 10px; */
     flex-direction: row;
-    /* background-color: aqua; */
 }
 .createFieldRows input{
+    color: white;
+    outline: none;
     padding: 7px;
     border-radius: 10px;
-    background-color: aqua;
+    background-color: #313131;
     width: 50%;
     border: 0;
 }
+
 .createFieldRows h4 {
     padding: 10px;
     text-align: left;
@@ -64,13 +70,45 @@
     width: 100px;
     height: 40px;
     border-radius: 7px;
-    border: 1px solid;
+    background-color: #725BFF;
+    color: white;
+    border: none;
 }
-#space{
+.createButton:hover{
+    border: 1px solid #CCCCCC;
+}
+
+.space{
     display: block;
-    height: 70px;
-    
+    height: 30px;
 }
+
+#sortField, #sortOrder{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #444444;
+    color: white;
+}
+
+#sortField{
+    margin-right: 10px;
+}
+
+.sortContainer{
+    width: 70%;
+    display: flex;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sortControls{
+    margin-left: auto;
+}
+#sortIcon{
+    margin-right: 10px;
+}
+
 table {
     box-sizing: border-box;
     width: 70%;
@@ -81,19 +119,40 @@ table {
     border-spacing: 0;
     overflow: hidden;
     border-radius: 10px;
-    border: 1px solid;
+    background-color: #2C2C2C;
+    border: 1px solid #444444;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #313131;
 }
 
 tr:hover {
-    background-color: coral;
+    background-color: #725BFF;
 }
 
-table td,
-table th {
-    border-width: 0 1px 1px 0;
-    padding: 30px;
+th:not(:last-child),
+td:not(:last-child) {
+  border-right: 1px solid #444444;
+}
+th{
+    background-color: #272727;
+}
+table td,table th {
+    padding: 15px;
+}
+
+#editButton{
+    margin-right: 10px;
+}
+
+.actionOptions{
+    padding: 10px;
+    border-radius: 7px;
+    background-color: #444444;
+    color: white;
+    border: none;
+}
+.actionOptions:hover{
+    box-shadow: inset 0 0 0 1px #CCCCCC;
 }
