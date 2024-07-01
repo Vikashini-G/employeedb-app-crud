@@ -2,7 +2,7 @@
   "name": "my-movie-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Vikashini-G/employeedb-app-crud",
+  "homepage": "https://vikashini-g.github.io/employeedb-app-crud/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
