@@ -44,11 +44,20 @@ body {
     padding: 10px;
     background-color: #2C2C2C;
 }
+
+.createFields.highlight {
+    box-shadow: 0 0 10px #444444; 
+}
+.dataTable.highlight {
+    box-shadow: 0 0 10px #444444; 
+}
+
 .createFieldRows{
     display: flex;
     box-sizing: border-box;
     flex-direction: row;
 }
+
 .createFieldRows input{
     color: white;
     outline: none;

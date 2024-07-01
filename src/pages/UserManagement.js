@@ -18,10 +18,22 @@ const UserManagement = () => {
     const [filterName, setFilterName] = useState('');
     const [sortFieldBy, setSortFIeldBy] = useState('Sal');
     const [sortOrderBy, setSortOrderBy] = useState('asc');
+    const [highlightCreateFields, setHighlightCreateFields] = useState(false); 
+    const [highlightTable, setHighlightTable] = useState(false); 
 
     const createUser = async () => {
         await addDoc(usersCollectionRef, { Name: newName, Age: newAge, DOB: newDOB, Sal: newSal, Dept: newDept });
         fetchUsers();
+        setNewName('');
+        setNewAge(0);
+        setNewDOB('');
+        setNewSal(0);
+        setNewDept('');
+        setHighlightTable(true);
+        setTimeout(() => {
+            setHighlightTable(false); 
+        }, 500);
+        window.alert("Employee data added successfully.");
     };
 
     const updateUser = async () => {
@@ -34,6 +46,11 @@ const UserManagement = () => {
         setNewSal(0);
         setNewDept('');
         fetchUsers();
+        setHighlightTable(true);
+        setTimeout(() => {
+            setHighlightTable(false); 
+        }, 500);
+        window.alert("Employee data updated successfully.");
     };
 
     const editUser = async (id, name, age, dob, sal, dept) => {
@@ -44,12 +61,19 @@ const UserManagement = () => {
         setNewDept(dept);
         setId(id);
         setShow(true);
+        setHighlightCreateFields(true); 
+        setTimeout(() => {
+            setHighlightCreateFields(false); 
+        }, 500);
     };
 
     const deleteUser = async (id) => {
-        const deleteVal = doc(db, "users", id);
-        await deleteDoc(deleteVal);
-        fetchUsers();
+        const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+        if (confirmDelete) {
+            await deleteDoc(doc(db, "users", id));
+            fetchUsers();
+            window.alert("Employee data deleted successfully.");
+        }
     };
 
     //   Filters
@@ -100,7 +124,7 @@ const UserManagement = () => {
             <div class="space"></div>
 
             {/* Create or edit Employee data */}
-            <div class="createFields">
+            <div class="createFields" className={`createFields ${highlightCreateFields ? 'highlight' : ''}`}>
                 <div class="createFieldRows">
                     <h4>Name</h4>
                     <input
@@ -153,8 +177,8 @@ const UserManagement = () => {
                     />
                 </div>
             
-            {!show ? <button class="createButton" onClick={createUser}> Create User </button> :
-                    <button class="createButton" onClick={updateUser}> Update User </button>}
+            {!show ? <button className={`createButton ${highlightTable ? 'highlight' : ''}`} onClick={createUser}> Create User </button> :
+                    <button className={`createButton ${highlightTable ? 'highlight' : ''}`} onClick={updateUser}> Update User </button>}
             </div>
             
             <div class="space"></div>
@@ -175,7 +199,7 @@ const UserManagement = () => {
                 </div>
             </div>
 
-            <table id="dataTable">
+            <table className={`dataTable ${highlightTable ? 'highlight' : ''}`}>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -192,7 +216,7 @@ const UserManagement = () => {
                             <td>{user.Name}</td>
                             <td>{user.Age}</td>
                             <td>{user.DOB}</td>
-                            <td>{user.Sal}</td>
+                            <td>{parseFloat(user.Sal).toLocaleString()}</td>
                             <td>{user.Dept}</td>
                             <td>
                                 <button class="actionOptions" id="editButton" onClick={() => editUser(user.id, user.Name, user.Age, user.DOB, user.Sal, user.Dept)}>Edit</button>
@@ -202,6 +226,7 @@ const UserManagement = () => {
                     ))}
                 </tbody>
             </table>
+            <div class="space"></div>
         </div>
     );
 };
