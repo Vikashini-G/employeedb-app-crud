@@ -1,0 +1,27 @@
+.headerContent {
+    display: flex;
+    align-items: center;
+    /* background-color: aqua; */
+    padding: 10px;
+}
+
+p{
+    /* background-color: red; */
+    font-weight: 550;
+    font-size: 20px;
+    color: white;
+    flex-grow: 1;
+    text-align: left;
+    align-self: flex-start;
+    margin-top: 5px; /* Adjust top margin to create space */
+    margin-left: 10px;
+}
+
+#myLogo{
+    align-items: center;
+    margin-right: 5px; 
+    /* background-color: blueviolet; */
+    height: 45px;
+    cursor: pointer;
+    
+}

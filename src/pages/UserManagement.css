@@ -1,15 +1,23 @@
+:root{
+    --background: #1F1F1F;
+    --accent: #725BFF;
+    --highlight: #444444;
+    --glow: #CCCCCC;
+    --primary: #2C2C2C;
+    --secondary: #313131;
+}
+
 body {
-    background-color: #1F1F1F;
+    background-color: var(--background);
 }
 
 .UserManagement{
-    background-color: #1F1F1F;
     padding: 20px;
     color: white;
 }
 
 #searchBox {
-    background-color: #444444;
+    background-color: var(--highlight);
     box-sizing: border-box;
     width: 70%;
     padding: 10px;
@@ -19,11 +27,11 @@ body {
     border-radius: 7px;
 }
 #searchBox:hover{
-    box-shadow: inset 0 0 0 1px #CCCCCC;
+    box-shadow: inset 0 0 0 1px var(--glow);
 }
 
 #searchBox input{
-    background-color: #444444;
+    background-color: var(--highlight);
     outline: none;
     border: 0;
     display: flex;
@@ -39,17 +47,17 @@ body {
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid #444444;
+    border: 1px solid var(--highlight);
     border-radius: 10px;
     padding: 10px;
-    background-color: #2C2C2C;
+    background-color: var(--primary);
 }
 
 .createFields.highlight {
-    box-shadow: 0 0 10px #444444; 
+    box-shadow: 0 0 10px var(--highlight);
 }
 .dataTable.highlight {
-    box-shadow: 0 0 10px #444444; 
+    box-shadow: 0 0 10px var(--highlight); 
 }
 
 .createFieldRows{
@@ -63,7 +71,7 @@ body {
     outline: none;
     padding: 7px;
     border-radius: 10px;
-    background-color: #313131;
+    background-color: var(--secondary);
     width: 50%;
     border: 0;
 }
@@ -79,12 +87,12 @@ body {
     width: 100px;
     height: 40px;
     border-radius: 7px;
-    background-color: #725BFF;
+    background-color: var(--accent);
     color: white;
     border: none;
 }
 .createButton:hover{
-    border: 1px solid #CCCCCC;
+    border: 1px solid var(--glow);
 }
 
 .space{
@@ -96,7 +104,7 @@ body {
     border: none;
     border-radius: 10px;
     padding: 10px;
-    background-color: #444444;
+    background-color: var(--highlight);
     color: white;
 }
 
@@ -128,21 +136,21 @@ table {
     border-spacing: 0;
     overflow: hidden;
     border-radius: 10px;
-    background-color: #2C2C2C;
-    border: 1px solid #444444;
+    background-color: var(--primary);
+    border: 1px solid var(--highlight);
 }
 
 tr:nth-child(even) {
-    background-color: #313131;
+    background-color: var(--secondary);
 }
 
 tr:hover {
-    background-color: #725BFF;
+    background-color: var(--accent);
 }
 
 th:not(:last-child),
 td:not(:last-child) {
-  border-right: 1px solid #444444;
+  border-right: 1px solid var(--highlight);
 }
 th{
     background-color: #272727;
@@ -158,10 +166,10 @@ table td,table th {
 .actionOptions{
     padding: 10px;
     border-radius: 7px;
-    background-color: #444444;
+    background-color: var(--highlight);
     color: white;
     border: none;
 }
 .actionOptions:hover{
-    box-shadow: inset 0 0 0 1px #CCCCCC;
+    box-shadow: inset 0 0 0 1px var(--glow);
 }

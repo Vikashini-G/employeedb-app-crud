@@ -16,10 +16,10 @@ const UserManagement = () => {
 
     //   Functions for filters
     const [filterName, setFilterName] = useState('');
-    const [sortFieldBy, setSortFIeldBy] = useState('Sal');
+    const [sortFieldBy, setSortFIeldBy] = useState('Name');
     const [sortOrderBy, setSortOrderBy] = useState('asc');
     const [highlightCreateFields, setHighlightCreateFields] = useState(false); 
-    const [highlightTable, setHighlightTable] = useState(false); 
+    const [highlightTable, setHighlightTable] = useState(false);
 
     const createUser = async () => {
         await addDoc(usersCollectionRef, { Name: newName, Age: newAge, DOB: newDOB, Sal: newSal, Dept: newDept });
@@ -32,10 +32,10 @@ const UserManagement = () => {
         setHighlightTable(true);
         setTimeout(() => {
             setHighlightTable(false); 
-        }, 500);
+        }, 700);
         window.alert("Employee data added successfully.");
     };
-
+    
     const updateUser = async () => {
         const updateData = doc(db, 'users', id);
         await updateDoc(updateData, { Name: newName, Age: newAge, DOB: newDOB, Sal: newSal, Dept: newDept });
@@ -49,11 +49,12 @@ const UserManagement = () => {
         setHighlightTable(true);
         setTimeout(() => {
             setHighlightTable(false); 
-        }, 500);
+        }, 700);
         window.alert("Employee data updated successfully.");
     };
 
     const editUser = async (id, name, age, dob, sal, dept) => {
+        scrollToTop();
         setNewName(name);
         setNewAge(age);
         setNewDOB(dob);
@@ -64,7 +65,7 @@ const UserManagement = () => {
         setHighlightCreateFields(true); 
         setTimeout(() => {
             setHighlightCreateFields(false); 
-        }, 500);
+        }, 700);
     };
 
     const deleteUser = async (id) => {
@@ -107,6 +108,16 @@ const UserManagement = () => {
         setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
+    const setShowMessage = () => {
+
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"  // Optional: smooth scrolling behavior
+        });
+    };
     return (
         <div className="UserManagement">
             {/* Filter by name and Department */}
