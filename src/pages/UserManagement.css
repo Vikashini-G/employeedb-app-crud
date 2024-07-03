@@ -11,6 +11,12 @@ body {
     background-color: var(--background);
 }
 
+#popUp {
+    position: fixed; 
+    z-index: 999; 
+}
+
+
 .UserManagement{
     padding: 20px;
     color: white;

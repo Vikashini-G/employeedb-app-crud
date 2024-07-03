@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, addDoc, doc, deleteDoc, updateDoc, query, orderBy } from "firebase/firestore";
 import { db } from '../firebase';
 import './UserManagement.css';
+import PopUp from "./PopUp";
 
 const UserManagement = () => {
     const [newName, setNewName] = useState('');
@@ -20,6 +21,19 @@ const UserManagement = () => {
     const [sortOrderBy, setSortOrderBy] = useState('asc');
     const [highlightCreateFields, setHighlightCreateFields] = useState(false); 
     const [highlightTable, setHighlightTable] = useState(false);
+    const [showPopUp, setShowPopUp] = useState(false);
+    const showPopupHandler = () => setShowPopUp(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+        setShowPopUp(false);
+      }, 2000);
+     return () => clearTimeout(timer);
+     }, [showPopUp]);
+     let popup = null;
+     if(showPopUp) {
+       popup = <PopUp />;
+      }
 
     const createUser = async () => {
         await addDoc(usersCollectionRef, { Name: newName, Age: newAge, DOB: newDOB, Sal: newSal, Dept: newDept });
@@ -33,7 +47,7 @@ const UserManagement = () => {
         setTimeout(() => {
             setHighlightTable(false); 
         }, 700);
-        window.alert("Employee data added successfully.");
+        showPopupHandler();
     };
     
     const updateUser = async () => {
@@ -50,7 +64,7 @@ const UserManagement = () => {
         setTimeout(() => {
             setHighlightTable(false); 
         }, 700);
-        window.alert("Employee data updated successfully.");
+        showPopupHandler();
     };
 
     const editUser = async (id, name, age, dob, sal, dept) => {
@@ -73,7 +87,8 @@ const UserManagement = () => {
         if (confirmDelete) {
             await deleteDoc(doc(db, "users", id));
             fetchUsers();
-            window.alert("Employee data deleted successfully.");
+            showPopupHandler();
+            // window.alert("Employee data deleted successfully.");
         }
     };
 
@@ -108,18 +123,16 @@ const UserManagement = () => {
         setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
-    const setShowMessage = () => {
-
-    };
-
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: "smooth"  // Optional: smooth scrolling behavior
+            behavior: "smooth"
         });
     };
     return (
         <div className="UserManagement">
+            {popup}
+            
             {/* Filter by name and Department */}
 
             <div id="searchBox">
@@ -209,7 +222,7 @@ const UserManagement = () => {
                     </select>
                 </div>
             </div>
-
+            
             <table className={`dataTable ${highlightTable ? 'highlight' : ''}`}>
                 <thead>
                     <tr>
