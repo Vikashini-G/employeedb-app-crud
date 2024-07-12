@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/employeedb-app-crud/static/css/main.e97ecd62.css",
-    "main.js": "/employeedb-app-crud/static/js/main.cb661183.js",
+    "main.css": "/employeedb-app-crud/static/css/main.dcf7013a.css",
+    "main.js": "/employeedb-app-crud/static/js/main.dda204db.js",
     "static/js/453.fbcca3cf.chunk.js": "/employeedb-app-crud/static/js/453.fbcca3cf.chunk.js",
     "index.html": "/employeedb-app-crud/index.html",
-    "main.e97ecd62.css.map": "/employeedb-app-crud/static/css/main.e97ecd62.css.map",
-    "main.cb661183.js.map": "/employeedb-app-crud/static/js/main.cb661183.js.map",
+    "main.dcf7013a.css.map": "/employeedb-app-crud/static/css/main.dcf7013a.css.map",
+    "main.dda204db.js.map": "/employeedb-app-crud/static/js/main.dda204db.js.map",
     "453.fbcca3cf.chunk.js.map": "/employeedb-app-crud/static/js/453.fbcca3cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e97ecd62.css",
-    "static/js/main.cb661183.js"
+    "static/css/main.dcf7013a.css",
+    "static/js/main.dda204db.js"
   ]
 }
