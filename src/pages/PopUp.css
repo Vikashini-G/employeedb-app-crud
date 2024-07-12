@@ -1,0 +1,18 @@
+.popUpDialogue{
+    position: fixed;
+    z-index: 999;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    padding:  0px 100px 0px 100px;
+    margin: 0;
+    text-align: center;
+    background-color: var(--secondary);
+    border: 1px solid #656565;
+    border-radius: 10px;
+    box-shadow: 0 0 6px var(--highlight);
+}
+h4{
+    font-weight: normal;
+}
