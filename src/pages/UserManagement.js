@@ -88,7 +88,6 @@ const UserManagement = () => {
             await deleteDoc(doc(db, "users", id));
             fetchUsers();
             showPopupHandler();
-            // window.alert("Employee data deleted successfully.");
         }
     };
 
@@ -132,7 +131,7 @@ const UserManagement = () => {
     return (
         <div className="UserManagement">
             {popup}
-            
+
             {/* Filter by name and Department */}
 
             <div id="searchBox">
